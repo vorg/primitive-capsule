@@ -28,7 +28,7 @@ Window.create({
 
         this.view = Mat4.create();
 
-        Mat4.lookAt(this.view, [0, 2, 3], [0, 0, 0], [0, 1, 0]);
+        Mat4.lookAt(this.view, [0, 1, 3], [0, 0, 0], [0, 1, 0]);
 
         ctx.setProjectionMatrix(this.projection);
         ctx.setViewMatrix(this.view);
