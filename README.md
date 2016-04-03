@@ -10,12 +10,13 @@ A minimal capsule geometry for 3D rendering, including normals, UVs and cell ind
 
 [![NPM](https://nodei.co/npm/primitive-capsule.png)](https://www.npmjs.com/package/primitive-capsule)
 
-#### `mesh = createCapsule([r, h, n])`
+#### `mesh = createCapsule([r, h, numSubdivisionsHeight, numSegments])`
 
 Parameters:  
-`r` - radius, defaults to 1  
-`h` - height, defaults to r/2  
-`n` - resolution, defaults to 32
+`r` - radius, defaults to 0.5
+`h` - height, defaults to r*2  
+`numSubdivisionsHeight` - num height segments, defaults to 12
+`numSegments` - num side segments, defaults to 12
 
 ## Example
 

@@ -1,7 +1,7 @@
-function createCapsule(radius, height, subdivisionsHeight, numSegments) {
+function createCapsule(radius, height, numSubdivisionsHeight, numSegments) {
     if (radius === undefined) radius = 0.5;
     if (height === undefined) height = radius * 2;
-    if (subdivisionsHeight === undefined) subdivisionsHeight = 12;
+    if (numSubdivisionsHeight === undefined) numSubdivisionsHeight = 12;
     if (numSegments === undefined) numSegments = 12;
 
     var positions = [];
@@ -25,13 +25,13 @@ function createCapsule(radius, height, subdivisionsHeight, numSegments) {
     	}
     }
 
-	var ringsBody = subdivisionsHeight + 1;
-	var ringsTotal = subdivisionsHeight + ringsBody;
+	var ringsBody = numSubdivisionsHeight + 1;
+	var ringsTotal = numSubdivisionsHeight + ringsBody;
 
 
 	var bodyIncr = 1.0 / ( ringsBody - 1 );
-	var ringIncr = 1.0 / ( subdivisionsHeight - 1 );
-	for( var r = 0; r < subdivisionsHeight / 2; r++ ) {
+	var ringIncr = 1.0 / ( numSubdivisionsHeight - 1 );
+	for( var r = 0; r < numSubdivisionsHeight / 2; r++ ) {
 		calculateRing( numSegments, Math.sin( Math.PI * r * ringIncr), Math.sin( Math.PI * ( r * ringIncr - 0.5 ) ), -0.5 );
     }
 
@@ -39,7 +39,7 @@ function createCapsule(radius, height, subdivisionsHeight, numSegments) {
 		calculateRing( numSegments, 1.0, 0.0, r * bodyIncr - 0.5);
     }
 
-    for( var r = subdivisionsHeight / 2; r < subdivisionsHeight; r++ ) {
+    for( var r = numSubdivisionsHeight / 2; r < numSubdivisionsHeight; r++ ) {
 		calculateRing( numSegments, Math.sin( Math.PI * r * ringIncr), Math.sin( Math.PI * ( r * ringIncr - 0.5 ) ), +0.5);
     }
 
