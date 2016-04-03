@@ -14,7 +14,7 @@ A minimal capsule geometry for 3D rendering, including normals, UVs and cell ind
 
 Parameters:  
 `r` - radius, defaults to 1  
-`h` - height, defaults to r/2
+`h` - height, defaults to r/2  
 `n` - resolution, defaults to 32
 
 ## Example
