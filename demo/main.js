@@ -28,7 +28,7 @@ Window.create({
 
         this.view = Mat4.create();
 
-        Mat4.lookAt(this.view, [0, 1, 3], [0, 0, 0], [0, 1, 0]);
+        Mat4.lookAt(this.view, [0, 2, 3], [0, 0, 0], [0, 1, 0]);
 
         ctx.setProjectionMatrix(this.projection);
         ctx.setViewMatrix(this.view);
@@ -38,7 +38,7 @@ Window.create({
 
         this.program = ctx.createProgram(res.vert, res.frag);
 
-        var g = createCapsule(0.5);
+        var g = createCapsule(0.5, 1, 24, 24);
 
         var attributes = [
             { data: g.positions, location: ctx.ATTRIB_POSITION },
@@ -48,7 +48,7 @@ Window.create({
 
         var indices = { data: g.cells };
 
-        this.mesh = ctx.createMesh(attributes, indices, ctx.TRIANGLES);
+        this.mesh = ctx.createMesh(attributes, indices);
 
         var img = new Uint8Array([
             0xff, 0xff, 0xff, 0xff, 0xcc, 0xcc, 0xcc, 0xff,
@@ -72,7 +72,7 @@ Window.create({
         ctx.bindProgram(this.program);
         this.program.setUniform('uTexture', 0);
 
-        Mat4.rotate(this.model, Math.PI/100, [0, 1, 0]);
+        //Mat4.rotate(this.model, Math.PI/100, [0, 1, 0]);
         ctx.setModelMatrix(this.model);
 
         ctx.bindMesh(this.mesh);

@@ -47,7 +47,7 @@ npm start
 
 ## Credits
 
-Ported from C code by Paul Bourke in [Generating Capsule Geometry](http://paulbourke.net/geometry/capsule/) (2012)
+Ported from C++ code from Cinder https://github.com/cinder/Cinder
 
 ## License
 
