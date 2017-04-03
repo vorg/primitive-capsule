@@ -13,15 +13,15 @@ function createCapsule(radius, height, numSubdivisionsHeight, numSegments) {
     	var segIncr = 1.0 / ( segments - 1 );
 
     	for( var s = 0; s < segments; s++ ) {
-    		var x = Math.cos( (Math.PI * 2) * s * segIncr ) * r;
+    		var x = -Math.cos( (Math.PI * 2) * s * segIncr ) * r;
     		var z = Math.sin( (Math.PI * 2) * s * segIncr ) * r;
 
             positions.push([radius * x, radius * y + height * dy, radius * z])
             normals.push([x, y, z])
 
-			var u = 1.0 - (s * segIncr);
+			var u = (s * segIncr);
 			var v = 0.5 - ((radius * y + height * dy) / (2.0 * radius + height));
-			uvs.push([u, v]);
+			uvs.push([u, 1.0 - v]);
     	}
     }
 

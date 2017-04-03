@@ -1,17 +1,17 @@
 var Window       = require('pex-sys/Window');
 var Mat4         = require('pex-math/Mat4');
 var Vec3         = require('pex-math/Vec3');
-var glslify      = require('glslify-promise');
+var glslify      = require('glslify');
 var createCapsule   = require('../index.js');
 
+var res = {
+  vert: glslify.file(__dirname + '/Material.vert'),
+  frag: glslify.file(__dirname + '/Material.frag')
+}
 Window.create({
     settings: {
         width: 1024,
         height: 576
-    },
-    resources: {
-        vert: { glsl: glslify(__dirname + '/Material.vert') },
-        frag: { glsl: glslify(__dirname + '/Material.frag') }
     },
     init: function() {
         var ctx = this.getContext();
@@ -33,8 +33,6 @@ Window.create({
         ctx.setProjectionMatrix(this.projection);
         ctx.setViewMatrix(this.view);
         ctx.setModelMatrix(this.model);
-
-        var res = this.getResources();
 
         this.program = ctx.createProgram(res.vert, res.frag);
 
@@ -72,11 +70,15 @@ Window.create({
         ctx.bindProgram(this.program);
         this.program.setUniform('uTexture', 0);
 
-        //Mat4.rotate(this.model, Math.PI/100, [0, 1, 0]);
+        // Mat4.rotate(this.model, Math.PI/100, [0, 1, 0]);
+        ctx.pushModelMatrix();
+        Mat4.identity(this.model)
+        // Mat4.rotate(this.model, 30 / 180 * Math.PI, [0, 1, 0]);
         ctx.setModelMatrix(this.model);
 
         ctx.bindMesh(this.mesh);
 
         ctx.drawMesh();
+        ctx.popModelMatrix();
     }
 })

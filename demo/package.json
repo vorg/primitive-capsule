@@ -16,7 +16,7 @@
     "beefy": "^2.1.5"
   },
   "dependencies": {
-    "glslify-promise": "^1.0.1",
+    "glslify": "^6.0.2",
     "pex-context": "git://github.com/variablestudio/pex-context",
     "pex-io": "git://github.com/variablestudio/pex-io",
     "pex-math": "git://github.com/variablestudio/pex-math",
